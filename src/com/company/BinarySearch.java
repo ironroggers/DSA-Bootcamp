@@ -1,29 +1,23 @@
-package com.company;
-
-import com.sun.jdi.connect.Connector;
-
 public class BinarySearch {
-    static int binary(int [] arr,int target,int start,int end){
+    public static void main(String[] args) {
+        int [] arr = new int[]{1,2,3,4,5,6,7,8,9,10,11,12,13,14,15};
+        int index = binarySearch(arr,99);
+        System.out.println(index);
+    }
 
+    private static int binarySearch(int[] arr, int num) {
+        int start=0;
+        int end = arr.length-1;
         while(start<=end){
-            int mid = (start+end)/2;
-            if(arr[mid]==target){
+            int mid = start + (end-start)/2;
+            if(arr[mid]==num){
                 return mid;
-            }
-            else if(arr[mid]>target){
-                end=mid-1;
-            }
-            else if(arr[mid]<target){
+            }else if(num>mid){
                 start=mid+1;
+            }else{
+                end=mid-1;
             }
         }
         return -1;
     }
-
-    public static void main(String[] args) {
-        int []arr={1,2,3,4,5,6,7,8,9,10,11,12,13,14};
-        int index=binary(arr,4,0,arr.length-1);
-        System.out.println(index);
-    }
-
 }
